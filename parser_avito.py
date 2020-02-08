@@ -7,11 +7,13 @@ HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gec
 
 
 def get_html(url, params=None):
-    pass
+    r = requests.get(url, headers=HEADERS, params=params)
+    return r
 
 
 def parse():
-    pass
+    html = get_html(URL)
+    print(html.status_code)
 
 
 parse()
