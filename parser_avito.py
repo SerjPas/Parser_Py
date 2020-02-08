@@ -1,15 +1,22 @@
 import requests
 from bs4 import BeautifulSoup
+import csv
+import os
 
 URL = 'https://auto.ria.com/newauto/marka-jeep/'
 HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0',
            'accept': '*/*'}
 HOST = 'https://auto.ria.com'
+FILE = 'cars.csv'
 
 
 def get_html(url, params=None):
     r = requests.get(url, headers=HEADERS, params=params)
     return r
+
+
+def get_pages_count(html):
+    pass
 
 
 def get_content(html):
