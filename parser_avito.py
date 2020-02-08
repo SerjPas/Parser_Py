@@ -13,7 +13,10 @@ def get_html(url, params=None):
 
 def parse():
     html = get_html(URL)
-    print(html.status_code)
+    if html.status_code == 200:
+        pass
+    else:
+        print("Error")
 
 
 parse()
