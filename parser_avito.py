@@ -14,7 +14,7 @@ def get_html(url, params=None):
 def parse():
     html = get_html(URL)
     if html.status_code == 200:
-        pass
+        print(html.text)
     else:
         print("Error")
 
