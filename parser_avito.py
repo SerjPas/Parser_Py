@@ -11,10 +11,23 @@ def get_html(url, params=None):
     return r
 
 
+def get_content(html):
+    """
+    Create new object soup from libery BeautifulSoup
+    :param html and type of document we work with 'html.parser'
+
+    """
+    soup = BeautifulSoup(html, 'html.parser')
+    items = soup.find_all('a', class_='na-card-item')
+
+    print(items)
+
+
 def parse():
     html = get_html(URL)
     if html.status_code == 200:
-        print(html.text)
+        # call the object
+        get_content(html.text)
     else:
         print("Error")
 
