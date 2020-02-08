@@ -16,15 +16,22 @@ def get_html(url, params=None):
 
 
 def get_pages_count(html):
-    pass
+    """
+        Create new object soup from libery BeautifulSoup
+        :param html and type of document we work with 'html.parser'
+    """
+    soup = BeautifulSoup(html, 'html.parser')
+    pagination = soup.find_all('span', class_='mhide')
+    if pagination:
+        return int(pagination[-1].get_text())
+    else:
+        return 1
 
 
 def get_content(html):
     """
     Create new object soup from libery BeautifulSoup
     :param html and type of document we work with 'html.parser'
-
-
     """
     soup = BeautifulSoup(html, 'html.parser')
     items = soup.find_all('a', class_='na-card-item')
@@ -52,6 +59,9 @@ def parse():
     if html.status_code == 200:
         # call the object
         cars = get_content(html.text)
+
+        pages_count = get_pages_count(html.text)
+        print(pages_count)
     else:
         print("Error")
 
